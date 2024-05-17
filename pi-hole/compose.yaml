@@ -1,0 +1,20 @@
+version: "3"
+services:
+  pialert:
+    container_name: pialert
+    # use the below line if you want to test the latest dev image
+    # image: "jokobsk/pi.alert_dev:latest" 
+    image: "jokobsk/pi.alert:latest"      
+    network_mode: host        
+    restart: unless-stopped
+    volumes:
+      - /portainer/Files/AppData/Config/pialert2/config:/home/pi/pialert/config
+      - /portainer/Files/AppData/Config/pialert2/db:/home/pi/pialert/db      
+      # (optional) useful for debugging if you have issues setting up the container
+      #- /portainer/Files/AppData/Config/pialert2/logs:/home/pi/pialert/front/log
+      - /portainer/Files/AppData/Config/PiHole/pihole-FTL.db:/etc/pihole/pihole-FTL.db
+    environment:
+      - TZ=Europe/Warsaw      
+      - HOST_USER_ID=1000
+      - HOST_USER_GID=1000
+      - PORT=20211
