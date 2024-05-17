@@ -1,7 +1,3 @@
-Requirements:
-
-WSL 2 + CUDA + DOCKER:
-
 #  Prerequisities Installation
 ## Docker
 ```
